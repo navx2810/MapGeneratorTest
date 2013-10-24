@@ -22,6 +22,8 @@ public class MapDrawer {
 	
 	public void fillPath(){
 		currentPos = new Point(map.maxMapHeight-map.maxRoomSize, map.maxMapWidth-map.maxRoomSize);
+			//start walking
+			
 	}
 	
 	

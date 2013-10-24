@@ -7,6 +7,7 @@ import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
 import net.matt.entity.Map;
 import net.matt.entity.SpriteManager;
+import net.matt.mapdrawer.RoomStack;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
@@ -19,10 +20,9 @@ public class MainDisplay {
 	public void start(){
 		try {
 			Display.setDisplayMode(new DisplayMode(800, 800));
-			Display.setTitle("Map Generator Demo");
+			Display.setTitle("Matts Map Generator Demo");
 			Display.create();
 		} catch (LWJGLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -35,6 +35,8 @@ public class MainDisplay {
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();glOrtho(0, 800, 800, 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
+		
+		System.out.println(RoomStack.rooms.size());
 		
 		while(!Display.isCloseRequested()){
 			

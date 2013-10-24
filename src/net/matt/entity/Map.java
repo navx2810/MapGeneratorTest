@@ -2,6 +2,10 @@ package net.matt.entity;
 
 import java.util.Random;
 
+import net.matt.mapdrawer.Point;
+import net.matt.mapdrawer.Room;
+import net.matt.mapdrawer.RoomStack;
+
 public class Map {
 
 	public int maxMapHeight, maxMapWidth, maxRoomSize, minRoomSize;
@@ -84,10 +88,15 @@ public class Map {
 		int rX = random.nextInt(maxMapHeight - maxRoomSize), rY = random
 				.nextInt(maxMapHeight - maxRoomSize + 1);
 		if (checkBounds(rX)) {
+			Room room = new Room();
 			for (int h = 0; h < maxRoomSize; h++)
-				for (int w = 0; w < maxRoomSize; w++)
+				for (int w = 0; w < maxRoomSize; w++){
 					map[rX + w][rY + h] = 'R';
+					room.addPoint(new Point(rX + w, rY + h));
+				}
+			RoomStack.addRoom(room);
 		}
+		
 	}
 
 	void layRoom(int numberOfTimes) {
@@ -96,6 +105,7 @@ public class Map {
 	}
 
 	void layWalls() {
+		RoomStack.combineRooms();
 		for (int h = 0; h < maxMapHeight; h++)
 			for (int w = 0; w < maxMapWidth; w++) {
 				if (map[h][w] == 'R')
@@ -107,6 +117,10 @@ public class Map {
 
 	void layCorridors() {
 
+	}
+	
+	void laySpecial(){
+		
 	}
 
 	private boolean isWall(int h, int w) {
@@ -130,11 +144,9 @@ public class Map {
 			return false;
 	}
 
-	/* ***************************************************************************************************
+	/* ******************************************************
 	 * Method idea, pick a point and start walking draw out the world from
 	 * walking instead of "Stamping" /*
-	 * *****************************************
-	 * ******************************************************
-	 */
+	 * ******************************************************/
 
 }
