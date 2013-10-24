@@ -218,3 +218,7 @@ pip-log.txt
 .classpath
 
 *.class
+
+*.class
+
+bin/MainDisplay.class
